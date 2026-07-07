@@ -1,0 +1,334 @@
+@import "tailwindcss";
+@import "@fontsource/space-grotesk/300.css";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+/* ───────────────────────────── Design Tokens ───────────────────────────── */
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  /* Neon accent — shared between themes, overridden via CSS custom properties */
+  --color-neon: var(--neon);
+  --color-chat: var(--chat-bg);
+  --color-chat-input: var(--chat-input-bg);
+  --color-chat-border: var(--chat-border);
+}
+
+/* ───────────────────────── Theme CSS Variables ─────────────────────────── */
+
+:root {
+  --neon: #a3e635;
+  --neon-shadow: rgba(163, 230, 53, 0.6);
+  --neon-hover-border: rgba(163, 230, 53, 0.5);
+  --neon-hover-shadow: rgba(163, 230, 53, 0.15);
+  --bg: #0a0a0a;
+  --text: #e5e5e5;
+  --text-muted: #9ca3af;
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --chat-bg: rgba(0, 0, 0, 0.4);
+  --chat-border: rgba(255, 255, 255, 0.05);
+  --chat-input-bg: rgba(255, 255, 255, 0.05);
+  --chat-input-border: rgba(255, 255, 255, 0.1);
+  --chat-scrollbar-track: rgba(255, 255, 255, 0.02);
+  --chat-scrollbar-thumb: rgba(163, 230, 53, 0.3);
+  --chat-scrollbar-thumb-hover: rgba(163, 230, 53, 0.6);
+}
+
+:root.light {
+  --neon: #65a30d;
+  --neon-shadow: rgba(101, 163, 13, 0.4);
+  --neon-hover-border: rgba(101, 163, 13, 0.5);
+  --neon-hover-shadow: rgba(101, 163, 13, 0.15);
+  --bg: #f3f4f6;
+  --text: #1f2937;
+  --text-muted: #4b5563;
+  --panel-bg: rgba(255, 255, 255, 0.7);
+  --panel-border: rgba(0, 0, 0, 0.1);
+  --chat-bg: rgba(255, 255, 255, 0.8);
+  --chat-border: rgba(0, 0, 0, 0.1);
+  --chat-input-bg: rgba(0, 0, 0, 0.05);
+  --chat-input-border: rgba(0, 0, 0, 0.1);
+  --chat-scrollbar-track: rgba(0, 0, 0, 0.05);
+  --chat-scrollbar-thumb: rgba(101, 163, 13, 0.3);
+  --chat-scrollbar-thumb-hover: rgba(101, 163, 13, 0.6);
+}
+
+/* ────────────────────────── Base Styles ──────────────────────────────── */
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .text-neon {
+  font-family: var(--font-display);
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body {
+    cursor: none;
+  }
+  
+  a, button, [role="button"], input, textarea, select {
+    cursor: none;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  transition: background 0.3s ease;
+  background: radial-gradient(
+      circle at 20% 30%,
+      color-mix(in srgb, var(--neon) 15%, transparent) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      color-mix(in srgb, var(--neon) 10%, transparent) 0%,
+      transparent 50%
+    );
+}
+
+/* ───────────────────────── Glass Panel ───────────────────────────────── */
+
+.glass-panel {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--neon-hover-border);
+  box-shadow: 0 8px 32px 0 var(--neon-hover-shadow);
+}
+
+/* ───────────────────────── Text Utilities ────────────────────────────── */
+
+.text-neon {
+  color: var(--neon);
+  transition: color 0.3s ease;
+}
+
+.text-shadow {
+  text-shadow: 0 0 10px var(--neon-shadow);
+  color: var(--neon);
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.text-muted {
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+/* ───────────────────────── Background Utilities ──────────────────────── */
+
+.bg-neon {
+  background-color: var(--neon);
+  transition: background-color 0.3s ease;
+}
+
+.bg-chat {
+  background-color: var(--chat-bg);
+  transition: background-color 0.3s ease;
+}
+
+.bg-chat-input {
+  background-color: var(--chat-input-bg);
+  transition: background-color 0.3s ease;
+}
+
+/* ───────────────────────── Border Utilities ──────────────────────────── */
+
+.border-chat {
+  border-color: var(--chat-border);
+  transition: border-color 0.3s ease;
+}
+
+.border-neon {
+  border-color: var(--neon);
+  transition: border-color 0.3s ease;
+}
+
+/* ───────────────────────── Neon Scanline ─────────────────────────────── */
+
+.neon-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  background-size: 200% 100%;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* ──────────────────────── Tilt Card (3D) ─────────────────────────────── */
+
+.tilt-card {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+/* ──────────────────────── Infinite Carousel ──────────────────────────── */
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+
+/* ──────────────────────── Timeline ───────────────────────────────────── */
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--neon);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.35rem;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon-shadow);
+}
+
+/* ──────────────────────── Chat Scrollbar ─────────────────────────────── */
+
+#chat-history::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-history::-webkit-scrollbar-track {
+  border-radius: 4px;
+  background: var(--chat-scrollbar-track);
+}
+
+#chat-history::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: var(--chat-scrollbar-thumb);
+}
+
+#chat-history::-webkit-scrollbar-thumb:hover {
+  background: var(--chat-scrollbar-thumb-hover);
+}
+
+/* ──────────────────────── Bento Grid ────────────────────────────────── */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ──────────────────── Reduced Motion ────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-line {
+    animation: none;
+    background: var(--neon);
+    opacity: 0.5;
+  }
+
+  .carousel-track {
+    animation: none !important;
+  }
+
+  .tilt-card {
+    transform: none !important;
+  }
+
+  .tilt-card * {
+    transform: none !important;
+  }
+
+  .animate-ping {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ──────────────────── Shadow utility for neon ───────────────────────── */
+
+.shadow-neon\/20 {
+  box-shadow: 0 10px 15px -3px color-mix(in srgb, var(--neon) 20%, transparent);
+}
