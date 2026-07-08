@@ -19,9 +19,23 @@ export function ProjectsCarousel() {
     // Do not animate when the user prefers reduced motion
     if (prefersReducedMotion) return;
 
+    // Declared outside gsap.context so the outer return() can call it.
+    // gsap.context() never invokes the return value of its callback,
+    // so listeners placed only inside there would never be removed.
+    let ctxCleanup: (() => void) | undefined;
+
     const ctx = gsap.context(() => {
-      const tween = gsap.to(trackRef.current, {
-        x: 'calc(-50% - 0.75rem)',
+      const track = trackRef.current;
+      if (!track) return;
+
+      // Compute the pixel distance to scroll one full set of items.
+      // scrollWidth covers both duplicate sets; half of that is one set.
+      // Add half the gap so the seam lands exactly on the gap boundary.
+      const gapPx = parseFloat(getComputedStyle(track).gap || '24');
+      const distance = track.scrollWidth / 2 + gapPx / 2;
+
+      const tween = gsap.to(track, {
+        x: -distance,
         repeat: -1,
         duration: 30,
         ease: 'none',
@@ -34,14 +48,17 @@ export function ProjectsCarousel() {
       container?.addEventListener('mouseenter', pause);
       container?.addEventListener('mouseleave', play);
 
-      // Expose cleanup handles so ctx.revert() can reach them
-      return () => {
+      // Store cleanup so the outer return() can call it explicitly.
+      ctxCleanup = () => {
         container?.removeEventListener('mouseenter', pause);
         container?.removeEventListener('mouseleave', play);
       };
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctxCleanup?.();
+      ctx.revert();
+    };
   }, [prefersReducedMotion]);
 
   return (

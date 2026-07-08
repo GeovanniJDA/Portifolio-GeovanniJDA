@@ -32,7 +32,7 @@ export function SocialLinksCard() {
                 <a
                   href={link.url}
                   aria-label={`Visitar perfil no ${link.name}`}
-                  className="w-full flex flex-col items-center justify-center gap-2 bg-chat p-4 rounded-2xl border border-chat hover:border-neon transition-all group/social focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon cursor-none"
+                  className="w-full flex flex-col items-center justify-center gap-2 bg-chat p-4 rounded-2xl border border-chat hover:border-neon transition-all group/social focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon"
                 >
                   <Icon size={30} className="text-muted group-hover/social:text-neon transition-colors" />
                   <span className="text-xs text-muted group-hover/social:text-neon transition-colors font-medium">{link.name}</span>

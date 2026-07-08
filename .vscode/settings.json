@@ -1,0 +1,7 @@
+{
+  // The built-in CSS validator doesn't know Tailwind v4 at-rules
+  // (@theme, @utility, @variant, etc.) and produces false-positive errors.
+  // Tailwind CSS IntelliSense provides correct validation instead.
+  "css.validate": false,
+  "scss.validate": false
+}

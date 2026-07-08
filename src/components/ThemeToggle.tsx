@@ -12,7 +12,7 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
       <button
         id="theme-toggle"
         onClick={onToggle}
-        className="p-3 rounded-full glass-panel text-neon hover:bg-neon hover:text-black transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon cursor-none"
+        className="p-3 rounded-full glass-panel text-neon hover:bg-neon hover:text-black transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon"
         aria-label={theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
       >
         {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}

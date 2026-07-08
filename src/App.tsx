@@ -11,7 +11,6 @@ import { ContactCard } from './components/ContactCard';
 import { SocialLinksCard } from './components/SocialLinksCard';
 import { OrionChat } from './components/OrionChat';
 import { useTheme } from './hooks/useTheme';
-import { CustomCursor } from './components/CustomCursor';
 import { NoiseOverlay } from './components/NoiseOverlay';
 
 // Code-split Three.js / @react-three/* out of the main bundle.
@@ -32,7 +31,6 @@ export default function App() {
 
   return (
     <>
-      <CustomCursor />
       <NoiseOverlay />
       {!isCoarsePointer && (
         <Suspense fallback={null}>

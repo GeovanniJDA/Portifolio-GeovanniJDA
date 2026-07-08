@@ -16,7 +16,7 @@ export function ContactCard() {
         <Magnetic className="w-full">
           <a
             href={`mailto:${siteConfig.email}`}
-            className="block w-full text-center bg-chat-input hover:bg-neon hover:text-black transition-colors rounded-xl py-3 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon cursor-none"
+            className="block w-full text-center bg-chat-input hover:bg-neon hover:text-black transition-colors rounded-xl py-3 font-medium text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon"
           >
             {siteConfig.email}
           </a>

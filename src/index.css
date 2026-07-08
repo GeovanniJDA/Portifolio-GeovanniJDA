@@ -75,15 +75,7 @@ h1, h2, h3, h4, h5, h6, .text-neon {
   font-family: var(--font-display);
 }
 
-@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  body {
-    cursor: none;
-  }
-  
-  a, button, [role="button"], input, textarea, select {
-    cursor: none;
-  }
-}
+
 
 body::before {
   content: "";
