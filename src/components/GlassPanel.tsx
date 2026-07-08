@@ -1,3 +1,4 @@
+// Convention: every internal grid/flex container whose children hold variable-length text MUST set min-w-0 (className) or minWidth:0 (inline style) on those children to prevent min-width:auto blowout.
 import { type ReactNode } from 'react';
 
 interface GlassPanelProps {

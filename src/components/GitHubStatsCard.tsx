@@ -10,15 +10,15 @@ export function GitHubStatsCard() {
         <h3 className="text-lg font-medium mb-6 flex items-center gap-2">
           <GithubLogo size={20} className="text-neon" /> GitHub Stats
         </h3>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', minWidth: 0 }}>
           <div className="bg-chat p-3 rounded-2xl border border-chat text-center">
-            <span className="block text-3xl font-bold text-neon text-shadow">
+            <span className="block text-2xl font-bold text-neon text-shadow overflow-hidden text-ellipsis whitespace-nowrap">
               {siteConfig.stats.contributions}
             </span>
             <span className="text-xs text-muted">Contribuições</span>
           </div>
           <div className="bg-chat p-3 rounded-2xl border border-chat text-center">
-            <span className="block text-3xl font-bold text-neon text-shadow">
+            <span className="block text-2xl font-bold text-neon text-shadow overflow-hidden text-ellipsis whitespace-nowrap">
               {siteConfig.stats.repos}
             </span>
             <span className="text-xs text-muted">Repositórios</span>
