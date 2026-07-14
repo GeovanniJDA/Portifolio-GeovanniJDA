@@ -1,4 +1,4 @@
-import { ShareNetwork, LinkedinLogo, XLogo } from '@phosphor-icons/react';
+import { ShareNetwork, LinkedinLogo, InstagramLogo, TelegramLogo, WhatsappLogo, GithubLogo } from '@phosphor-icons/react';
 import { Magnetic } from './Magnetic';
 import { GlassPanel } from './GlassPanel';
 import { TiltCard } from './TiltCard';
@@ -14,17 +14,20 @@ interface SocialLink {
 
 const socialLinks: SocialLink[] = [
   { name: 'LinkedIn', url: siteConfig.social.linkedin, icon: LinkedinLogo },
-  { name: 'Twitter', url: siteConfig.social.twitter, icon: XLogo },
+  { name: 'GitHub', url: siteConfig.social.github, icon: GithubLogo },
+  { name: 'Instagram', url: siteConfig.social.instagram, icon: InstagramLogo },
+  { name: 'Telegram', url: siteConfig.social.telegram, icon: TelegramLogo },
+  { name: 'WhatsApp', url: siteConfig.social.whatsapp, icon: WhatsappLogo },
 ];
 
 export function SocialLinksCard() {
   return (
-    <GlassPanel className="p-8 flex flex-col justify-between group hover:border-neon">
+    <GlassPanel colSpan="3" className="p-8 flex flex-col justify-between group hover:border-neon">
       <TiltCard className="h-full flex flex-col">
         <h3 className="text-lg font-medium mb-6 flex items-center gap-2">
           <ShareNetwork size={20} className="text-neon" /> Conecte-se
         </h3>
-        <div className="grid grid-cols-2 gap-4 flex-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 flex-1">
           {socialLinks.map((link) => {
             const Icon = link.icon;
             return (

@@ -9,7 +9,6 @@ import { ProjectsCarousel } from './components/ProjectsCarousel';
 import { TimelineCard } from './components/TimelineCard';
 import { ContactCard } from './components/ContactCard';
 import { SocialLinksCard } from './components/SocialLinksCard';
-import { OrionChat } from './components/OrionChat';
 import { useTheme } from './hooks/useTheme';
 import { NoiseOverlay } from './components/NoiseOverlay';
 
@@ -45,21 +44,20 @@ export default function App() {
         <ProfileCard />
         <HeroCard />
 
-        {/* Row 2: Status + Tech Stack + GitHub Stats */}
+        {/* Row 2: Projects carousel (full width) — lead with proof of work */}
+        <ProjectsCarousel />
+
+        {/* Row 3: Status + Tech Stack + GitHub Stats */}
         <StatusCard />
         <TechStackCard />
         <GitHubStatsCard />
 
-        {/* Row 3: Projects carousel (full width) */}
-        <ProjectsCarousel />
-
-        {/* Row 4: Timeline + Contact + Social */}
+        {/* Row 4: Timeline + Contact */}
         <TimelineCard />
         <ContactCard />
-        <SocialLinksCard />
 
-        {/* Row 5: Orion AI Chat */}
-        <OrionChat />
+        {/* Row 5: Social links (full width) */}
+        <SocialLinksCard />
       </main>
     </div>
     </>

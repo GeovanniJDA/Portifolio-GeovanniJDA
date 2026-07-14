@@ -26,7 +26,10 @@ export const siteConfig = {
   statusSubtext: 'Resposta em < 24h',
   social: {
     linkedin: '{{LINKEDIN_URL}}',
-    twitter: '{{TWITTER_URL}}',
+    github: '{{GITHUB_URL}}',
+    instagram: '{{INSTAGRAM_URL}}',
+    telegram: '{{TELEGRAM_URL}}',
+    whatsapp: '{{WHATSAPP_URL}}',
   },
   stats: {
     contributions: '{{CONTRIBUTIONS_COUNT}}',
@@ -94,11 +97,3 @@ export const timeline: TimelineEntry[] = [
     description: '{{ROLE_DESCRIPTION}}',
   },
 ];
-
-export const orionSystemPrompt = `Você é o "Orion", um assistente de Inteligência Artificial integrado ao portfólio de um Desenvolvedor Fullstack.
-A stack de tecnologias do desenvolvedor inclui: React, Next.js, Tailwind CSS, TypeScript, Node.js, PostgreSQL e Python.
-Sua missão é atuar como um guia para visitantes e recrutadores:
-1. Responder perguntas sobre as tecnologias do desenvolvedor.
-2. Fazer brainstorm e sugerir ideias de arquitetura ou projetos caso o usuário peça.
-Seja conciso, profissional, porém amigável e entusiasmado. Utilize formatação markdown básica para listas.
-Suas respostas devem ser dadas sempre em Português do Brasil e ser relativamente curtas para caber num widget de chat.`;
